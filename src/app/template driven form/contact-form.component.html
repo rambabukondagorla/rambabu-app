@@ -3,8 +3,8 @@
     <form #form="ngForm" style="background-color: beige0;">
         <div class="form-group">
             <label for="txtFirstName" class="form-label">First Name</label>
-            <input ngModel name="txtFirstName" #txtFirstName="ngModel" minlength="4" required type="text"
-                id="txtFirstName" class="form-control">
+            <input ngModel name="txtFirstName" placeholder="Please enter your first name" #txtFirstName="ngModel"
+                minlength="4" required type="text" id="txtFirstName" class="form-control">
             <div *ngIf="txtFirstName.touched && txtFirstName.invalid">
                 <div class="alert alert-danger" *ngIf="txtFirstName.errors.required">
                     First Name is mandatory
