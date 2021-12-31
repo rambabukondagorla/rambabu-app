@@ -1,0 +1,29 @@
+<fieldset>
+    <form [formGroup]="loginForm" style="margin: 1rem;" #form="ngForm">
+        <h2>Login Page</h2>
+        <div class="form-group">
+            <label for="txtUserName">User Name :</label>
+            <input [(ngModel)]="loginEmail" name="txtUserName" formControlName="userName" id="txtUserName" type="text"
+                class="form-control">
+            <div class="alert alert-danger" *ngIf="userName.touched && userName.invalid">
+                Please enter User Name
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="txtPassword">Password :</label>
+            <input [(ngModel)]="loginPassword" name="txtPassword" formControlName="password" id="txtPassword"
+                type="password" class="form-control">
+            <div *ngIf="password.touched && password.invalid">
+                <div class="alert alert-danger" *ngIf="password.errors.required">
+                    Please enter Password
+                </div>
+                <div class="alert alert-danger" *ngIf="password.errors.minlength">
+                    Should contain atleast 6 characters
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button (click)="login()" class="btn btn-primary">Login</button>
+        </div>
+    </form>
+</fieldset>

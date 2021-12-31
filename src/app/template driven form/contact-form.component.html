@@ -1,0 +1,49 @@
+<h2>Template driven Forms</h2>
+<div class="card ComponentStyle">
+    <form #form="ngForm" style="background-color: beige0;">
+        <div class="form-group">
+            <label for="txtFirstName" class="form-label">First Name</label>
+            <input ngModel name="txtFirstName" #txtFirstName="ngModel" minlength="4" required type="text"
+                id="txtFirstName" class="form-control">
+            <div *ngIf="txtFirstName.touched && txtFirstName.invalid">
+                <div class="alert alert-danger" *ngIf="txtFirstName.errors.required">
+                    First Name is mandatory
+                </div>
+                <div class="alert alert-danger" *ngIf="txtFirstName.errors.minlength">
+                    First Name Minimum lengyh is 4 chars
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="txtLastName" class="form-label">Last Name</label>
+            <input ngModel name="txtLastName" #txtLastName="ngModel" required type="text" id="txtLastName"
+                class="form-control">
+            <div class="alert alert-danger" *ngIf="txtLastName.touched && txtLastName.invalid">
+                Last Name is mandatory
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="txtEmail" class="form-label">First Name</label>
+            <input ngModel name="txtEmail" #txtEmail="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                required type="email" id="txtEmail" class="form-control">
+            <div *ngIf="txtEmail.touched && txtEmail.invalid">
+                <div class="alert alert-danger" *ngIf="txtEmail.errors.required">
+                    Email is mandatory
+                </div>
+                <div class="alert alert-danger" *ngIf="txtEmail.errors.pattern">
+                    Email is In-valid
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="txtComments" class="form-label">Comments</label>
+            <textarea ngModel name="txtComments" #txtComments="ngModel" required id="txtComments" rows="5" cols="5"
+                class="form-control"></textarea>
+
+            <div style="color: red;" *ngIf="txtComments.touched && txtComments.invalid">
+                Comments are mandatory
+            </div>
+        </div>
+        <button class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+    </form>
+</div>

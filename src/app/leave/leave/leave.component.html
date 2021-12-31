@@ -1,0 +1,84 @@
+<div class="card componentStyle">
+    <div style="text-align: right;margin-bottom: 5px;">
+        <a data-bs-toggle="modal" (click)="addLeave()" data-bs-target="#mpLeaves" class="btn btn-primary">
+            <i class="fas fa-plus-square"></i>Apply Leave</a>
+    </div>
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th>#Id</th>
+                <th> Reason</th>
+                <th>From Date</th>
+                <th>To Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let leave of lstLeave">
+                <td>{{leave.leaveId}}</td>
+                <td>{{leave.reason}}</td>
+                <td>{{leave.fromDate}}</td>
+                <td>{{leave.toDate}}</td>
+                <td>{{leave.status}}</td>
+                <td>
+                    <a [routerLink]="['/leave',leave.employeeId]" data-bs-toggle="modal" data-bs-target="#mpLeave"
+                        class="btn btn-info"><i class="fas fa-eye"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="modal fade" id="mpLeaves" tabindex="-1" aria-labelledby="mplblLeavesTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="mplblLeavesTitle">{{title}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="">
+                        <div class="form-group">
+                            <label for="txtDescription" class="col-form-label">Description:</label>
+                            <input [(ngModel)]="leaveModel.description" name="txtDescription" type="text"
+                                class="form-control" id="txtDescription">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtFromDate" class="col-form-label">From Date:</label>
+                            <input [(ngModel)]="leaveModel.fromDate" type="text" name="txtFromDate" class="form-control"
+                                id="txtFromDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtToDate" class="col-form-label">To Date:</label>
+                            <input [(ngModel)]="leaveModel.toDate" type="text" name="txtToDate" class="form-control"
+                                id="txtToDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtNoOfDays" class="col-form-label">No of Days:</label>
+                            <input [(ngModel)]="leaveModel.noOfDays" type="text" name="txtNoOfDays" class="form-control"
+                                id="txtNoOfDays">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtReason" class="col-form-label">Reason:</label>
+                            <input [(ngModel)]="leaveModel.reason" type="text" name="txtReason" class="form-control"
+                                id="txtReason">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtBody" class="col-form-label">Role:</label>
+                            <select>
+                                <option>Super Admin</option>
+                                <option>Hr</option>
+                                <option>Manager</option>
+                                <option>Employee</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button (click)="saveLeave()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

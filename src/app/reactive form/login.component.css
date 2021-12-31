@@ -1,0 +1,21 @@
+h2 {
+    color:indigo;
+    text-align: center;
+}
+fieldset{
+    height: 400px;
+    width: 400px;
+    margin: auto;
+    border-radius: 10px;
+    background-color:lightslategray;
+}
+input{
+    padding: 4px;
+    margin: auto;
+    color:maroon;
+}
+button{
+    padding: 3px;
+    margin-left: 150px;
+    margin-top: 3px;
+}
